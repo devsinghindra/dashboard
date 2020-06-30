@@ -4,6 +4,7 @@ import cloudDB from "../../services/firebase";
 import LineChart from "../charts/LineChart/LineChart";
 import BarChart from "../charts/BarChart/BarChart";
 import PieChart from "../charts/PieChart/PieChart";
+import DualChart from "../charts/DualChart/DualChart";
 
 class Home extends Component {
     state = {
@@ -31,9 +32,10 @@ class Home extends Component {
     render() {
         const { data } = this.state;
         const h = this.state.data.length !== 0 ? (<div className={styles.Charts}>
-            <LineChart title="Joy" sentiment={data} />
+            {/* <LineChart title="Joy" sentiment={data} />
             <BarChart title="Joy" sentiment={data} />
-            <PieChart sentiment={data} />
+            <PieChart sentiment={data} /> */}
+            <DualChart sentiment={data} />
         </div>) : null;
         return (
             <>

@@ -5,26 +5,6 @@ import { mean } from "d3";
 import styles from "./PieChart.module.css";
 
 function PieChart(props) {
-    const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
-        datasets: [{
-            data: [300, 50, 100],
-            backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
-            ],
-            hoverBackgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
-            ]
-        }]
-    };
 
     const getMean = () => {
         let meanArray = [];
@@ -64,7 +44,6 @@ function PieChart(props) {
         datasets: [{
             label: "Percentage Score ",
             fill: false,
-            backgroundColor: 'rgba(75,192,192,1)',
             borderColor: 'rgba(0,0,0,10)',
             borderWidth: 2,
             data: getMean().map(d => (d.avg)),

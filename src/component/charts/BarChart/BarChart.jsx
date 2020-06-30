@@ -12,6 +12,7 @@ function BarChart(props) {
         datasets: [{
             label: "Percentage Score " + props.title,
             fill: false,
+            barThickness: 12,
             backgroundColor: 'rgba(75,192,192,1)',
             borderColor: 'rgba(0,0,0,10',
             borderWidth: 2,
