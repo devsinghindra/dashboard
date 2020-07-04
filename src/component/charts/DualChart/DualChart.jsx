@@ -59,25 +59,21 @@ function DualChart(props) {
                 label: "Percentage Score " + props.title,
                 fill: false,
                 barThickness: 12,
-                backgroundColor: 'rgba(75,192,192,1)',
+                backgroundColor: 'rgba(75,192,192,.5)',
                 borderColor: 'rgba(0,0,0,10',
                 borderWidth: 2,
-                data: props.sentiment.map(d => (d.value.polarity))
+                data: props.sentiment.map(d => (d.value.polarity)),
             }, {
                 label: "Subjectivity Score " + props.title,
                 fill: false,
                 barThickness: 12,
-                backgroundColor: 'rgba(255,0,0,1)',
+                backgroundColor: 'rgba(255,0,0,.5)',
                 borderColor: 'rgba(0,0,0,10',
                 borderWidth: 2,
-                data: props.sentiment.map(d => (d.value.subjectivity))
+                data: props.sentiment.map(d => (d.value.subjectivity)),
             }
-            ]
-        } : null;
-
-        graph = state !== null ? (<Bar
-            data={state}
-            options={{
+            ],
+            options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 title: {
@@ -90,8 +86,27 @@ function DualChart(props) {
                     position: "right"
                 }
             }
-            }
-        />) : null;
+        } : null;
+
+        graph = state !== null ?
+            (<><Bar
+                data={
+                    {
+                        labels: state.labels,
+                        datasets: [state.datasets[0]]
+                    }
+                }
+                options={state.options} />
+
+                <Bar
+                    data={
+                        {
+                            labels: state.labels,
+                            datasets: [state.datasets[1]]
+                        }
+                    }
+                    options={state.options} />
+            </>) : null;
     }
 
 
