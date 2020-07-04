@@ -1,0 +1,12 @@
+.Container {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: lightgreen;
+}
+
+.Charts {
+  width: 100%;
+}

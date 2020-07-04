@@ -1,0 +1,29 @@
+.grid{
+    display: grid;
+    grid-template-rows: 30% auto;
+    grid-template-columns: 100%;
+    border : 1px dotted black;
+    height : 100%;
+    .child_1{
+        border: 1px dotted black;
+        .title{
+            color : blue;
+            border: 1px dotted black;
+        }
+        .subtitle{
+            color : green;
+            border: 1px dotted black;
+        }
+        .button {
+            color : yellow;
+            border: 1px dotted black;
+        }
+    }
+    .child_2{
+        border : 1px dotted black;
+        p{
+            color : red;
+        }
+    }
+}
+

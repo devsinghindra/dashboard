@@ -1,0 +1,66 @@
+// Using Sass inheritance for reusable code
+
+// Parent Position : relative and child Position : fixed ,is great great css trick for
+// making navbar and sidebar
+%property-shared{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 100%;
+    grid-template-columns: 15% 85%;
+    position: relative;
+    .sidebar{
+        border : 1px dotted black;
+        position: fixed;
+        height: 100%;
+        width :14%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+    }
+}
+
+%position{
+    position: absolute;
+    left : 14%;
+    height: auto;
+    border: 1px dotted black;
+    width: 85.8%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 10% 10% auto;
+    grid-template-columns: auto;
+}
+
+.dashboard_grid{
+    @extend %property-shared;
+    .dashboard_area{
+        @extend %position;
+        .detail{
+            display : grid;
+            grid-template-rows: auto;
+            grid-template-columns: auto auto auto;
+            border : 1px dotted black;
+        }
+        .graph{
+            border: 1px dotted black;
+            display : grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto;
+        }
+    }
+}
+
+.hashtag_grid{
+    @extend %property-shared;
+    .hashtag_area{
+        @extend %position;
+    }
+}
+
+.overall_grid{
+    @extend %property-shared;
+    .overall_area{
+        @extend %position;
+    }
+}

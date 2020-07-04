@@ -1,0 +1,21 @@
+.Container {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Chart {
+  /* height: 80%;
+  width: 70%; */
+  padding: 20px 20px;
+  /* overflow-x: scroll; */
+}
+
+.ChartElement {
+  padding: 20px 20px;
+  height: 400px;
+  width: 400px;
+  background-color: lightgreen;
+}
