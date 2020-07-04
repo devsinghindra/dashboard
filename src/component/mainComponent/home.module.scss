@@ -1,28 +1,46 @@
 .grid{
     display: grid;
-    grid-template-rows: 30% auto;
+    grid-template-rows: 40% auto;
     grid-template-columns: 100%;
-    border : 1px dotted black;
     height : 100%;
     .child_1{
-        border: 1px dotted black;
+        background-image: url('./../../assets/twitter.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+        .jumbotron{
+            margin : 6%;
+        }
         .title{
-            color : blue;
-            border: 1px dotted black;
+            font-size: 4em;
+            color : #1f7bac;
         }
         .subtitle{
-            color : green;
-            border: 1px dotted black;
+            font-size:1.1em;
+            color : #93dcff;
         }
-        .button {
-            color : yellow;
-            border: 1px dotted black;
+        .button{
+            color : white;
+            border : 1px solid white;
+            margin-top: 2%;
+            .link{
+                color : white;
+                text-decoration: none;
+            }
         }
     }
     .child_2{
-        border : 1px dotted black;
-        p{
-            color : red;
+    
+        display: grid;
+        grid-template-columns: 20% auto 20%;
+        .summary{
+            grid-column: 2/3;
+            margin-top: 5%;
+            .text{
+                color : #1b1b1b;
+                line-height: 1.5em;
+            }
         }
     }
 }
