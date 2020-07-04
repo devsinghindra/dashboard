@@ -2,9 +2,11 @@
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-rows: repeat(5,auto);
+    grid-template-rows: 20% repeat(3,6%) auto;
     grid-template-columns: auto;
     .child-sidebar{
-        border : 1px dotted black;
+    background-color: #189de4;
+    height: 100%;
+    padding: 4%;
     }
 }
