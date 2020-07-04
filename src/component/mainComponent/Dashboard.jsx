@@ -2,27 +2,29 @@ import React from 'react';
 import Sidebar from './sidebar/sidebar';
 import Header from './Header/Header';
 import styles from './component.module.scss';
-import Card from './Card/Card';
+import Cards from './Card/Card';
 
 function Dashboard() {
-   
-    return (
-      <div className={styles.dashboard_grid}>
-        <div className = {styles.sidebar}>
-          <Sidebar />
-        </div> 
-        <div className = {styles.dashboard_area}>
-           <div><Header /></div>
-           <div class={styles.detail}>
-             <div><Card no="5000" text="No of tweets"/></div>
-             <div><Card no="4" text="Emtions"/></div>
-             <div><Card no="2" text="Scoring Criteria"/></div>
-           </div>
-           <div className={styles.graph}>
-           </div>
-        </div>
+
+  return (
+    <div className={styles.dashboard_grid}>
+      <div className={styles.sidebar}>
+        <Sidebar />
       </div>
-    );
+      <div className={styles.dashboard_area}>
+        <Header text="Date-Wise Analysis" />
+        <div class={styles.detail}>
+          <div><Cards no="5000" text="No of tweets" /></div>
+          <div><Cards no="4" text="Emtions" /></div>
+          <div><Cards no="2" text="Scoring Criteria" /></div>
+        </div>
+        <div className={styles.graph}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+           </div>
+      </div>
+    </div>
+  );
 }
-   
+
 export default Dashboard;

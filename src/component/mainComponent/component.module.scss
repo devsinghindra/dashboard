@@ -28,7 +28,7 @@
     width: 85.8%;
     height: 100%;
     display: grid;
-    grid-template-rows: 10% 10% auto;
+    grid-template-rows: 10% 25% auto;
     grid-template-columns: auto;
 }
 
@@ -36,17 +36,25 @@
     @extend %property-shared;
     .dashboard_area{
         @extend %position;
+        .header{
+            width : 86%;
+        }
         .detail{
             display : grid;
             grid-template-rows: auto;
             grid-template-columns: auto auto auto;
             border : 1px dotted black;
+            grid-column-gap : 4%;
+            background-color: #e2e1e0;
         }
         .graph{
+            height : 200%;
             border: 1px dotted black;
             display : grid;
             grid-template-columns: auto auto auto;
             grid-template-rows: auto;
+            font-size : 3em;
+            background-color: #e2e1e0;
         }
     }
 }
