@@ -1,0 +1,44 @@
+.Container {
+  flex: 1;
+  background-color: coral;
+  padding: 10px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 2fr 0.5fr 2fr 2fr;
+  grid-template-areas:
+    "Score Score"
+    "Monthly Monthly"
+    "Tabs Tabs";
+}
+
+.Score {
+  grid-area: Score;
+}
+
+.Monthly {
+  grid-area: Monthly;
+}
+
+.Tabs {
+  grid-area: Tabs;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.Tab {
+  background-color: #191919;
+  margin: 0 5px;
+  border: 1px solid white;
+  color: white;
+}
+
+.Tab h1 {
+  margin: 3px 0;
+  font-size: 1.5rem;
+}
+
+.Tab:hover {
+  background-color: #1f1f1f;
+  cursor: pointer;
+}

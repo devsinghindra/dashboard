@@ -35,7 +35,7 @@ class Home extends Component {
             {/* <LineChart title="Joy" sentiment={data} />
             <BarChart title="Joy" sentiment={data} />
             <PieChart sentiment={data} /> */}
-            <DualChart sentiment={data} />
+            <LineChart sentiment={data} />
         </div>) : null;
         return (
             <>

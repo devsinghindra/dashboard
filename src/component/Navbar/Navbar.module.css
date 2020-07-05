@@ -1,0 +1,22 @@
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: white;
+  background-color: #191919;
+  text-align: center;
+}
+
+.Item {
+  border: 1px solid white;
+}
+
+.Item h1 {
+  margin: 3px 0;
+  font-size: 1.5rem;
+  padding: 0 0;
+}
+
+.Item:hover {
+  background-color: #1f1f1f;
+  cursor: pointer;
+}
