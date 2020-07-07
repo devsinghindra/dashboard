@@ -1,29 +1,42 @@
 .Container {
   flex: 1;
-  background-color: coral;
+  background-color: rgba(252, 245, 170, 0.877);
   padding: 10px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 2fr 0.5fr 2fr 2fr;
+  grid-template-rows: auto 2fr 0.5fr auto 2fr;
   grid-template-areas:
     "Score Score"
-    "Monthly Monthly"
-    "Tabs Tabs";
+    "Monthly Subjectivity"
+    "Tabs Tabs"
+    "TabsDaily TabsDaily";
 }
 
 .Score {
+  padding: 10px 10px;
   grid-area: Score;
+  display: flex;
 }
 
 .Monthly {
   grid-area: Monthly;
+  margin: 10px 10px;
+}
+.Subjectivity {
+  grid-area: Subjectivity;
+  margin: 10px 10px;
 }
 
 .Tabs {
   grid-area: Tabs;
   text-align: center;
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.TabsDaily {
+  grid-area: TabsDaily;
 }
 
 .Tab {

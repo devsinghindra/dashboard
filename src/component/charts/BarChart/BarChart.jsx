@@ -8,7 +8,7 @@ function BarChart(props) {
 
     const stateBar = props.sentiment.length !== 0 ? {
         labels: props.sentiment.map(d =>
-            d.date),
+            d.y),
         datasets: [{
             label: "Percentage Score " + props.title,
             fill: false,
@@ -16,7 +16,7 @@ function BarChart(props) {
             backgroundColor: 'rgba(75,192,192,1)',
             borderColor: 'rgba(0,0,0,10',
             borderWidth: 2,
-            data: props.sentiment.map(d => (d.value.joy))
+            data: props.sentiment.map(d => (d.x))
         }
         ]
     } : null;
@@ -42,7 +42,7 @@ function BarChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>Hello from Barchart</h1>
+                <h1>{props.heading}</h1>
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {bar}

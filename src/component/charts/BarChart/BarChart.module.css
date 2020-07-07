@@ -7,7 +7,8 @@
 }
 
 .Chart {
-  height: 80%;
+  /* height: 80%; */
+  height: fit-content;
   width: 70%;
   padding: 20px 20px;
   overflow-x: scroll;
@@ -15,6 +16,6 @@
 
 .ChartElement {
   height: 400px;
-  width: 2000px;
+  /* width: 2000px; */
   /* background-color: lightgreen; */
 }

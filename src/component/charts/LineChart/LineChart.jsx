@@ -6,7 +6,7 @@ import styles from "./LineChart.module.css";
 function LineChart(props) {
     const stateLine = props.sentiment.length !== 0 ? {
         labels: props.sentiment.map(d =>
-            d.date),
+            d.y),
         datasets: [{
             label: "Percentage Score " + props.title,
             fill: false,
@@ -14,7 +14,7 @@ function LineChart(props) {
             lineTension: .5,
             borderColor: 'rgba(0,0,0,10',
             borderWidth: 2,
-            data: props.sentiment.map(d => (d.value.joy))
+            data: props.sentiment.map(d => (d.x))
         }
         ]
     } : null;
@@ -40,7 +40,7 @@ function LineChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>Hello from line chart</h1>
+                <h1>{props.heading}</h1>
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {line}
