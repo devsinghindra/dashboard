@@ -35,12 +35,12 @@ class Home extends Component {
             {/* <LineChart title="Joy" sentiment={data} />
             <BarChart title="Joy" sentiment={data} />
             <PieChart sentiment={data} /> */}
-            <LineChart sentiment={data} />
+            <LineChart sentiment={data.map(d => { return { x: d.value.joy, y: d.date } })} />
         </div>) : null;
         return (
             <>
                 <div className={styles.Container}>
-                    <h1>Hello from home</h1>
+                    <h1>Daily Data</h1>
                     {h}
                 </div>
             </>

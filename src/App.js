@@ -8,7 +8,7 @@ import Overall from "./component/Overall/Overall";
 import Prediction from "./component/Prediction/Prediction";
 
 function App() {
-  const [render, setRender] = useState("Overall");
+  const [render, setRender] = useState("Home");
   function onSelect(tab) {
     setRender(tab);
   }
