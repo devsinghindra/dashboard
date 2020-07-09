@@ -47,11 +47,11 @@ function PieChart(props) {
     }
 
     const statePie = props.sentiment.length !== 0 ? {
-        labels: getMean().map(d => (d.title)),
+        labels: Object.keys(colors),
         datasets: [{
             borderColor: 'rgba(0,0,0,10)',
             borderWidth: 2,
-            data: getMean().map(d => (d.avg)),
+            data: props.sentiment.map(d => +d.toFixed(2)),
             backgroundColor: Object.values(colors),
             hoverBackgroundColor: Object.values(colors)
         }

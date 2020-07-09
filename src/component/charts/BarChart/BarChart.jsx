@@ -53,4 +53,48 @@ function BarChart(props) {
     );
 }
 
+function DailyBarChart(props) {
+    const stateBar = props.sentiment.length !== 0 ? {
+        labels: ["Subjectivity", "Polarity"],
+        datasets: [{
+            label: "Score",
+            fill: false,
+            barThickness: 12,
+            backgroundColor: 'rgba(75,192,192,1)',
+            borderColor: 'rgba(0,0,0,10',
+            borderWidth: 2,
+            data: props.sentiment
+        }
+        ]
+    } : null;
+
+    const bar = stateBar !== null ? (<Bar
+        data={stateBar}
+        options={{
+            responsive: true,
+            maintainAspectRatio: false,
+
+            legend: {
+                display: true,
+                position: "top"
+            }
+        }
+        }
+    />) : null;
+
+    return (
+        <>
+            <div className={styles.Container}>
+                <h1>{props.heading}</h1>
+                <div className={styles.Chart}>
+                    <div className={styles.ChartElement}>
+                        {bar}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
 export default BarChart;
+export { DailyBarChart };
