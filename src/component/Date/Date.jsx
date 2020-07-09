@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NativeSelect, FormControl } from "@material-ui/core";
 import styles from "./Date.module.css";
 import PieChart from "../charts/PieChart/PieChart";
-import { DailyBarChart } from "../charts/BarChart/BarChart";
+import { ScoreBarChart } from "../charts/BarChart/BarChart";
 
 function Date(props) {
     const [date, setDate] = useState({});
@@ -33,7 +33,7 @@ function Date(props) {
             </div>
             <div className={styles.Score}>
                 <h1>Score</h1>
-                {(Object.keys(date).length !== 0) && <DailyBarChart sentiment={[date.value.subjectivity * 100, date.value.polarity * 100]} />}
+                {(Object.keys(date).length !== 0) && <ScoreBarChart sentiment={[{ subjectivity: date.value.subjectivity, polarity: date.value.polarity }]} />}
             </div>
             <div>
                 <h3>Select Date</h3>

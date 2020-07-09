@@ -6,17 +6,16 @@ import styles from "./LineChart.module.css";
 function LineChart(props) {
     const stateLine = props.sentiment.length !== 0 ? {
         labels: props.sentiment.map(d =>
-            d.y),
+            d.date),
         datasets: [{
             label: "Percentage Score " + props.title,
             fill: false,
-            backgroundColor: 'rgba(75,192,192,1)',
+            backgroundColor: 'black',
             lineTension: .5,
-            borderColor: 'rgba(0,0,0,10',
+            borderColor: 'rgba(144,238,144,1)',
             borderWidth: 2,
-            data: props.sentiment.map(d => (d.x))
-        }
-        ]
+            data: props.sentiment.map(d => (d.value[props.title].toFixed(2)))
+        }]
     } : null;
 
     const line = stateLine !== null ? (<Line
@@ -24,6 +23,80 @@ function LineChart(props) {
         options={{
             responsive: true,
             maintainAspectRatio: false,
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ]
+            },
+            title: {
+                display: true,
+                text: "Percentage Score " + props.title + " per day",
+                fontSize: 20
+            },
+            legend: {
+                display: true,
+                position: "top"
+            }
+        }
+        }
+    />) : null;
+
+    return (
+        <>
+            <div className={styles.Container}>
+                <h1>{props.heading}</h1>
+                <div className={styles.Chart}>
+                    <div className={styles.ChartElement}>
+                        {line}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+function DualLineChart(props) {
+    const stateLine = props.sentiment.length !== 0 ? {
+        labels: props.sentiment.map(d =>
+            d.date),
+        datasets: [{
+            label: "Percentage Score " + props.title1,
+            fill: false,
+            backgroundColor: 'black',
+            lineTension: .5,
+            borderColor: 'rgba(144,238,144,10)',
+            borderWidth: 2,
+            data: props.sentiment.map(d => (d.value[props.title1].toFixed(2)))
+        },
+        {
+            label: "Percentage Score " + props.title2,
+            fill: false,
+            backgroundColor: 'black',
+            lineTension: .5,
+            borderColor: 'rgba(255,165,0,10)',
+            borderWidth: 2,
+            data: props.sentiment.map(d => (d.value[props.title2].toFixed(2)))
+        }]
+    } : null;
+
+    const line = stateLine !== null ? (<Line
+        data={stateLine}
+        options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ]
+            },
             title: {
                 display: true,
                 text: "Percentage Score " + props.title + " per day",
@@ -52,3 +125,4 @@ function LineChart(props) {
 }
 
 export default LineChart;
+export { DualLineChart };

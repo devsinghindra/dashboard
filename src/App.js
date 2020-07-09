@@ -42,7 +42,7 @@ function App() {
   let show = <Home />
   switch (render) {
     case "Date": show = <Date data={data} />; break;
-    case "Overall": show = <Overall />; break;
+    case "Overall": show = <Overall data={data} />; break;
     case "Prediction": show = <Prediction />; break;
     default: show = <Home />;
   }

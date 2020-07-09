@@ -5,7 +5,7 @@ import { mean } from "d3";
 import styles from "./PieChart.module.css";
 
 const colors = {
-    happy: "#fddb22",
+    joy: "#fddb22",
     anger: "#ff1f1f",
     sad: "#3333ff",
     fear: "#3d3d3d"

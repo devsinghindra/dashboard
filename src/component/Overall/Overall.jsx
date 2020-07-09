@@ -1,85 +1,60 @@
-import React, { useState, useEffect } from "react";
-import cloudDB, { collectionName } from "../../services/firebase";
+import React, { useState } from "react";
 import styles from "./Overall.module.css";
-import LineChart from "../charts/LineChart/LineChart";
-import BarChart from "../charts/BarChart/BarChart";
+import LineChart, { DualLineChart } from "../charts/LineChart/LineChart";
+import BarChart, { ScoreBarChart } from "../charts/BarChart/BarChart";
+import { getWeekData, getMonthData } from "../../services/utilities";
 
-function Overall() {
-    const [data, setData] = useState([]);
-    const [tabData, setTabData] = useState([]);
-    const [tabTitle, setTabTitle] = useState("Happy");
-
-    const fetchData = async () => {
-        let sentimentData = [];
-        try {
-            await cloudDB.collection(collectionName).get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    sentimentData.push(
-                        {
-                            date: doc.id,
-                            value: doc.data()
-                        }
-                    );
-                });
-            });
-            setData(sentimentData);
-        } catch (error) {
-            console.log(error);
-
-        }
-    }
-    useEffect(() => {
-        fetchData();
-
-        setTabData(data.map(d => { return { y: d.date, x: d.joy } }));
-    }, []);
-    const monthlyData = (ar) => {
-        return ar.filter((d, idx) => {
-            return idx < 10;
-        });
-    }
+function Overall(props) {
+    const [tabTitle, setTabTitle] = useState("Joy");
 
     function onSelect(tabName) {
-        let tempArray = [];
-        let tabTitle = "Happy";
+        let tempTitle = "Joy";
         switch (tabName) {
-            case "Happy": tempArray = data.map(d => { return { y: d.date, x: d.value.joy } }); tabTitle = "Happy"; break;
-            case "Sad": tempArray = data.map(d => { return { y: d.date, x: d.value.sad } }); tabTitle = "Sad"; break;
-            case "Anger": tempArray = data.map(d => { return { y: d.date, x: d.value.anger } }); tabTitle = "Anger"; break;
-            case "Disgust": tempArray = data.map(d => { return { y: d.date, x: d.value.fear } }); tabTitle = "Disgust"; break;
-            default: tempArray = data.map(d => { return { y: d.data, x: d.joy } });
+            case "Joy": tempTitle = "Joy"; break;
+            case "Sad": tempTitle = "Sad"; break;
+            case "Anger": tempTitle = "Anger"; break;
+            case "Fear": tempTitle = "Fear"; break;
+            default: tempTitle = "Joy";
         }
-        setTabTitle(tabTitle);
-        setTabData(tempArray);
+        setTabTitle(tempTitle);
     }
 
-    // console.log(data, "hereoverall")
+    // console.log(props.data, "overall");
+    let weekData = [], monthData = [];
+    if (props.data.length !== 0) {
+        monthData = getMonthData(props.data);
+        weekData = getWeekData(props.data);
+        console.log(monthData, "month");
+        console.log(weekData, "week");
+    }
+
+    // console.log(props.data, "hereoverall")
     return (
         <div className={styles.Container}>
             <div className={styles.Score}>
-                {data.length !== 0 && <LineChart heading="Daily Data" sentiment={data.map(d => { return { y: d.date, x: +d.value.polarity.toFixed(2) } })} />}
+                {props.data.length !== 0 && <DualLineChart title1="polarity" title2="subjectivity" sentiment={props.data} />}
             </div>
             <div className={styles.Monthly}>
-                {data.length !== 0 && <BarChart heading="Monthly" sentiment={monthlyData(data).map(d => { return { y: d.date, x: +d.value.subjectivity.toFixed(2) } })} />}
+                {props.data.length !== 0 && <ScoreBarChart heading="Monthly" sentiment={monthData} />}
             </div>
-            <div className={styles.Subjectivity}>
-                {data.length !== 0 && <BarChart heading="Weekly" sentiment={monthlyData(data).map(d => { return { y: d.date, x: +d.value.polarity.toFixed(2) } })} />}
+            <div className={styles.Weekly}>
+                {props.data.length !== 0 && <ScoreBarChart heading="Weekly" sentiment={weekData} />}
 
             </div>
             <div className={styles.Tabs}>
-                <Tab title="Happy" onSelect={onSelect} />
+                <Tab title="Joy" onSelect={onSelect} />
                 <Tab title="Sad" onSelect={onSelect} />
                 <Tab title="Anger" onSelect={onSelect} />
-                <Tab title="Disgust" onSelect={onSelect} />
+                <Tab title="Fear" onSelect={onSelect} />
             </div>
             <div className={styles.TabsDaily}>
-                {tabData.length !== 0 && <LineChart heading={tabTitle} sentiment={tabData} />}
+                {props.data.length !== 0 && <LineChart title={tabTitle.toLowerCase()} sentiment={props.data} />}
             </div>
             <div >
-                {tabData.length !== 0 && <BarChart heading={tabTitle} sentiment={monthlyData(tabData)} />}
+                {props.data.length !== 0 && <BarChart title={tabTitle.toLowerCase()} sentiment={monthData} />}
             </div>
             <div >
-                {tabData.length !== 0 && <BarChart heading={tabTitle} sentiment={monthlyData(tabData)} />}
+                {props.data.length !== 0 && <BarChart title={tabTitle.toLowerCase()} sentiment={weekData} />}
             </div>
         </div>
     );
