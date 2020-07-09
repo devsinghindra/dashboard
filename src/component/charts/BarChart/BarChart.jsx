@@ -33,7 +33,7 @@ function BarChart(props) {
             },
             legend: {
                 display: true,
-                position: "right"
+                position: "top"
             }
         }
         }

@@ -1,0 +1,30 @@
+.Container {
+  flex: 1;
+  background-color: var(--background);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.Emotion {
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: var(--card);
+}
+
+.Emotion h1 {
+  margin: 0 0;
+}
+
+.Score {
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: var(--card);
+  width: 500px;
+  height: fit-content;
+}
+
+.Score h1 {
+  margin: 0 0;
+}

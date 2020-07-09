@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Home.module.css";
-import cloudDB from "../../services/firebase";
+import cloudDB, { collectionName } from "../../services/firebase";
 import LineChart from "../charts/LineChart/LineChart";
-import BarChart from "../charts/BarChart/BarChart";
-import PieChart from "../charts/PieChart/PieChart";
-import DualChart from "../charts/DualChart/DualChart";
 
 class Home extends Component {
     state = {
@@ -13,7 +10,7 @@ class Home extends Component {
     async componentDidMount() {
         let sentimentData = [];
         try {
-            await cloudDB.collection("sentiment").get().then((querySnapshot) => {
+            await cloudDB.collection(collectionName).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     sentimentData.push(
                         {

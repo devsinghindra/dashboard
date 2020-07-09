@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import cloudDB from "../../services/firebase";
+import cloudDB, { collectionName } from "../../services/firebase";
 import styles from "./Overall.module.css";
 import LineChart from "../charts/LineChart/LineChart";
 import BarChart from "../charts/BarChart/BarChart";
@@ -12,7 +12,7 @@ function Overall() {
     const fetchData = async () => {
         let sentimentData = [];
         try {
-            await cloudDB.collection("sentiment").get().then((querySnapshot) => {
+            await cloudDB.collection(collectionName).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     sentimentData.push(
                         {
@@ -53,7 +53,7 @@ function Overall() {
         setTabData(tempArray);
     }
 
-    console.log(data, "here")
+    // console.log(data, "hereoverall")
     return (
         <div className={styles.Container}>
             <div className={styles.Score}>

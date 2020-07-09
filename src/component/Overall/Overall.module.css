@@ -1,6 +1,6 @@
 .Container {
   flex: 1;
-  background-color: rgba(252, 245, 170, 0.877);
+  background-color: var(--background);
   padding: 10px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;

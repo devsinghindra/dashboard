@@ -4,6 +4,13 @@ import { mean } from "d3";
 
 import styles from "./PieChart.module.css";
 
+const colors = {
+    happy: "#fddb22",
+    anger: "#ff1f1f",
+    sad: "#3333ff",
+    fear: "#3d3d3d"
+}
+
 function PieChart(props) {
 
     const getMean = () => {
@@ -11,28 +18,28 @@ function PieChart(props) {
         meanArray.push({
             avg: mean(props.sentiment, (d) => {
                 return d.value.joy;
-            }),
+            }).toFixed(2),
             title: "Joy"
         }
         );
         meanArray.push({
             avg: mean(props.sentiment, (d) => {
                 return d.value.anger;
-            }),
+            }).toFixed(2),
             title: "Anger"
         }
         );
         meanArray.push({
             avg: mean(props.sentiment, (d) => {
                 return d.value.sad;
-            }),
+            }).toFixed(2),
             title: "Sad"
         }
         );
         meanArray.push({
             avg: mean(props.sentiment, (d) => {
                 return d.value.fear;
-            }),
+            }).toFixed(2),
             title: "Fear"
         }
         );
@@ -42,23 +49,11 @@ function PieChart(props) {
     const statePie = props.sentiment.length !== 0 ? {
         labels: getMean().map(d => (d.title)),
         datasets: [{
-            label: "Percentage Score ",
-            fill: false,
             borderColor: 'rgba(0,0,0,10)',
             borderWidth: 2,
             data: getMean().map(d => (d.avg)),
-            backgroundColor: [
-                'yellow',
-                'red',
-                'grey',
-                'blue'
-            ],
-            hoverBackgroundColor: [
-                'yellow',
-                'red',
-                'grey',
-                'blue'
-            ]
+            backgroundColor: Object.values(colors),
+            hoverBackgroundColor: Object.values(colors)
         }
         ]
     } : null;
@@ -68,14 +63,14 @@ function PieChart(props) {
         options={{
             responsive: true,
             maintainAspectRatio: false,
-            title: {
-                display: true,
-                text: "Percentage Score overall",
-                fontSize: 20
-            },
+            // title: {
+            //     display: true,
+            //     text: "Emotion Pie Chart",
+            //     fontSize: 20
+            // },
             legend: {
                 display: true,
-                position: "right"
+                position: "bottom"
             }
         }
         }
@@ -83,7 +78,7 @@ function PieChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>Hello from PieChart</h1>
+                {/* <h1>Hello from PieChart</h1> */}
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {pie}

@@ -31,7 +31,7 @@ function LineChart(props) {
             },
             legend: {
                 display: true,
-                position: "right"
+                position: "top"
             }
         }
         }

@@ -18,6 +18,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const cloudDB = firebase.firestore();
-
+const collectionName = "sentFinal";
 
 export default cloudDB;
+export { collectionName };
