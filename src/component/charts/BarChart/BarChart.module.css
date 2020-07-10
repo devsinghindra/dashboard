@@ -11,7 +11,7 @@
   height: fit-content;
   width: 70%;
   padding: 20px 20px;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 
 .ChartElement {

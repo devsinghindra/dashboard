@@ -29,6 +29,25 @@
   margin: 0 0;
 }
 
+.WordCloud {
+  height: 480px;
+  min-width: 400px;
+  width: fit-content;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: var(--card);
+}
+
+.WordCloud h2 {
+  padding: 0 0;
+}
+
+.WordCloud img {
+  padding: 10px 10px;
+  height: 400px;
+  width: 400px;
+}
+
 .Picker {
   box-sizing: border-box;
   box-shadow: var(--card);

@@ -7,9 +7,10 @@
   grid-template-rows: auto 2fr 0.5fr auto 2fr;
   grid-template-areas:
     "Score Score"
-    "Monthly Subjectivity"
+    "Monthly Frequency"
     "Tabs Tabs"
-    "TabsDaily TabsDaily";
+    "TabsDaily TabsDaily"
+    "TabsMonthly TabsFrequency";
 }
 
 .Score {
@@ -20,10 +21,32 @@
 
 .Monthly {
   grid-area: Monthly;
+  display: flex;
+  flex-flow: column;
   margin: 10px 10px;
 }
-.Weekly {
-  grid-area: Subjectivity;
+
+.TabsMonthly {
+  grid-area: TabsMonthly;
+  display: flex;
+  flex-flow: column;
+  margin: 10px 10px;
+}
+
+.Heading {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Freqency {
+  grid-area: Frequency;
+  margin: 10px 10px;
+}
+
+.TabsFreqency {
+  grid-area: TabsFrequency;
   margin: 10px 10px;
 }
 
@@ -54,4 +77,13 @@
 .Tab:hover {
   background-color: #1f1f1f;
   cursor: pointer;
+}
+
+.Picker {
+  box-sizing: border-box;
+  box-shadow: var(--card);
+}
+
+.Select {
+  padding: 2px 10px;
 }

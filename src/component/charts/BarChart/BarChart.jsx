@@ -39,11 +39,6 @@ function BarChart(props) {
                     }
                 ]
             },
-            title: {
-                display: true,
-                text: "Percentage Score " + props.title + " per day",
-                fontSize: 20
-            },
             legend: {
                 display: true,
                 position: "top"
@@ -55,7 +50,6 @@ function BarChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>{props.heading}</h1>
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {bar}
@@ -120,7 +114,6 @@ function ScoreBarChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>{props.heading}</h1>
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {bar}

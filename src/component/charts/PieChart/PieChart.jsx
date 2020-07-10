@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-import { mean } from "d3";
 
 import styles from "./PieChart.module.css";
 
@@ -12,39 +11,6 @@ const colors = {
 }
 
 function PieChart(props) {
-
-    const getMean = () => {
-        let meanArray = [];
-        meanArray.push({
-            avg: mean(props.sentiment, (d) => {
-                return d.value.joy;
-            }).toFixed(2),
-            title: "Joy"
-        }
-        );
-        meanArray.push({
-            avg: mean(props.sentiment, (d) => {
-                return d.value.anger;
-            }).toFixed(2),
-            title: "Anger"
-        }
-        );
-        meanArray.push({
-            avg: mean(props.sentiment, (d) => {
-                return d.value.sad;
-            }).toFixed(2),
-            title: "Sad"
-        }
-        );
-        meanArray.push({
-            avg: mean(props.sentiment, (d) => {
-                return d.value.fear;
-            }).toFixed(2),
-            title: "Fear"
-        }
-        );
-        return meanArray;
-    }
 
     const statePie = props.sentiment.length !== 0 ? {
         labels: Object.keys(colors),
@@ -78,7 +44,6 @@ function PieChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                {/* <h1>Hello from PieChart</h1> */}
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {pie}
