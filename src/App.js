@@ -5,7 +5,7 @@ import Header from './component/Header/Header';
 import Navbar from './component/Navbar/Navbar';
 import Date from "./component/Date/Date";
 import Overall from "./component/Overall/Overall";
-import Prediction from "./component/Prediction/Prediction";
+import Tracker from "./component/Tracker/Tracker";
 import cloudDB, { collectionName } from "./services/firebase";
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
   switch (render) {
     case "Date": show = <Date data={data} />; break;
     case "Overall": show = <Overall data={data} />; break;
-    case "Prediction": show = <Prediction />; break;
+    case "Tracker": show = <Tracker />; break;
     default: show = <Home />;
   }
   return (

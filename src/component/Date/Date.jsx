@@ -13,7 +13,7 @@ function Date(props) {
     const initializeDate = () => {
         if (props.data.length !== 0) {
             // console.log("in if");
-            setDate(props.data.reverse()[0]);
+            setDate(props.data[0]);
         }
     }
 
@@ -23,7 +23,7 @@ function Date(props) {
             try {
                 console.log(date.date, "intry");
                 await storageRef.ref().child(storagePath + date.date + ".png").getDownloadURL().then(function (url) {
-                    console.log(url, "url");
+                    // console.log(url, "url");
                     setImgUrl(url);
                 });
             } catch (error) {
@@ -33,6 +33,7 @@ function Date(props) {
     }
 
     useEffect(() => {
+        // props.data.reverse();
         initializeDate();
         getImageUrl();
     }, [props.data.length])
@@ -64,7 +65,7 @@ function Date(props) {
             </div>
             <div>
                 <h3>Select Date</h3>
-                <DatePicker data={props.data.reverse()} handleDate={handleDate} />
+                <DatePicker data={props.data} handleDate={handleDate} />
             </div>
         </div>
     );

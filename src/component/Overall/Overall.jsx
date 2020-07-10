@@ -27,8 +27,8 @@ function Overall(props) {
     if (props.data.length !== 0) {
         monthData = getMonthData(props.data);
         weekData = getWeekData(props.data);
-        console.log(monthData, "month");
-        console.log(weekData, "week");
+        // console.log(monthData, "month");
+        // console.log(weekData, "week");
     }
 
     function handleScorePicker(what) {

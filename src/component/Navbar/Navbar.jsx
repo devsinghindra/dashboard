@@ -10,8 +10,8 @@ function Navbar(props) {
             <div className={styles.Item} onClick={() => props.onSelect("Overall")}>
                 <h1>Overall</h1>
             </div>
-            <div className={styles.Item} onClick={() => props.onSelect("Prediction")}>
-                <h1>Prediction</h1>
+            <div className={styles.Item} onClick={() => props.onSelect("Tracker")}>
+                <h1>Tracker</h1>
             </div>
         </div>
     );
