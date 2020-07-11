@@ -21,7 +21,7 @@ function Date(props) {
         //if date has object i.e date
         if (Object.keys(date).length !== 0) {
             try {
-                console.log(date.date, "intry");
+                // console.log(date.date, "intry");
                 await storageRef.ref().child(storagePath + date.date + ".png").getDownloadURL().then(function (url) {
                     // console.log(url, "url");
                     setImgUrl(url);
@@ -33,7 +33,6 @@ function Date(props) {
     }
 
     useEffect(() => {
-        // props.data.reverse();
         initializeDate();
         getImageUrl();
     }, [props.data.length])

@@ -41,7 +41,7 @@ function App() {
   }
   let show = <Home />
   switch (render) {
-    case "Date": show = <Date data={data} />; break;
+    case "Date": show = <Date data={data.map((el, idx, data) => data[data.length - 1 - idx])} />; break;
     case "Overall": show = <Overall data={data} />; break;
     case "Tracker": show = <Tracker />; break;
     default: show = <Home />;
