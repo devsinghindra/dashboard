@@ -8,6 +8,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
+import { Dashboard, DeveloperMode } from "@material-ui/icons";
 
 function Home() {
     // Add flexbox and style and content
@@ -25,9 +26,11 @@ function Home() {
             </Typography>
                         {/* <!-- Add your link to="/"--> */}
                         <Button variant="outlined" color="primary" className={styles.button}>
+                            <Dashboard />
                             <Link to="/dashboard" className={styles.link}>Go to DashBoard</Link>
                         </Button>
                         <Button variant="outlined" color="primary" className={styles.button}>
+                            <DeveloperMode />
                             <Link to="/test" className={styles.link}>Test Model</Link>
                         </Button>
                     </Container>

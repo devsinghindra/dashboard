@@ -34,8 +34,20 @@ function LineChart(props) {
             scales: {
                 yAxes: [
                     {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Percentage'
+                        },
                         ticks: {
                             beginAtZero: true
+                        }
+                    }
+                ],
+                xAxes: [
+                    {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
                         }
                     }
                 ]
@@ -100,6 +112,10 @@ function DualLineChart(props) {
             scales: {
                 yAxes: [
                     {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Score'
+                        },
                         id: "polarity",
                         type: "linear",
                         position: "left",
@@ -107,11 +123,23 @@ function DualLineChart(props) {
                             // beginAtZero: true
                         }
                     }, {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Score'
+                        },
                         id: "subjectivity",
                         type: "linear",
                         position: "right",
                         ticks: {
                             // beginAtZero: true
+                        }
+                    }
+                ],
+                xAxes: [
+                    {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
                         }
                     }
                 ]
@@ -142,5 +170,98 @@ function DualLineChart(props) {
     );
 }
 
+
+function MultiLineChart(props) {
+    const stateLine = props.sentiment.length !== 0 ? {
+        labels: props.sentiment.map(d =>
+            d.date),
+        datasets: [{
+            label: "Percentage Joy",
+            fill: false,
+            backgroundColor: 'black',
+            lineTension: .5,
+            borderColor: colors.joy,
+            borderWidth: 2,
+            data: props.sentiment.map(d => (d.value.joy.toFixed(2)))
+        }, {
+            label: "Percentage Sad",
+            fill: false,
+            backgroundColor: 'black',
+            lineTension: .5,
+            borderColor: colors.sad,
+            borderWidth: 2,
+            data: props.sentiment.map(d => (d.value.sad.toFixed(2)))
+        }, {
+            label: "Percentage Anger",
+            fill: false,
+            backgroundColor: 'black',
+            lineTension: .5,
+            borderColor: colors.anger,
+            borderWidth: 2,
+            data: props.sentiment.map(d => (d.value.anger.toFixed(2)))
+        }, {
+            label: "Percentage Fear",
+            fill: false,
+            backgroundColor: 'black',
+            lineTension: .5,
+            borderColor: colors.fear,
+            borderWidth: 2,
+            data: props.sentiment.map(d => (d.value.fear.toFixed(2)))
+        }]
+    } : null;
+
+    const line = stateLine !== null ? (<Line
+        data={stateLine}
+        options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [
+                    {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Percentage'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ],
+                xAxes: [
+                    {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }
+                ]
+            },
+            title: {
+                display: true,
+                text: "Percentage Emotion per day",
+                fontSize: 20
+            },
+            legend: {
+                display: true,
+                position: "top"
+            }
+        }
+        }
+    />) : null;
+
+    return (
+        <>
+            <div className={styles.Container}>
+                <div className={styles.Chart}>
+                    <div className={styles.ChartElement}>
+                        {line}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+
 export default LineChart;
-export { DualLineChart };
+export { DualLineChart, MultiLineChart };

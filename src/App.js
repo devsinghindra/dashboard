@@ -38,7 +38,7 @@ function App() {
     };
   }, []);
 
-  console.log(data, 'app');
+  // console.log(data, 'app');
 
   function onSelect(tab) {
     setRender(tab);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Overall.module.css";
-import LineChart, { DualLineChart } from "../charts/LineChart/LineChart";
-import BarChart, { ScoreBarChart, FrequencyBarChart } from "../charts/BarChart/BarChart";
+import LineChart, { DualLineChart, MultiLineChart } from "../charts/LineChart/LineChart";
+import BarChart, { ScoreBarChart, FrequencyBarChart, MultiBarChart, MultiFrequencyBarChart } from "../charts/BarChart/BarChart";
 import { getWeekData, getMonthData } from "../../services/utilities";
 import { NativeSelect, FormControl, CircularProgress } from "@material-ui/core";
 import * as freq from "../../services/frequency";
@@ -9,7 +9,7 @@ import * as freq from "../../services/frequency";
 const spinner = <CircularProgress />;
 
 function Overall(props) {
-    const [tabTitle, setTabTitle] = useState("Joy");  //to display selected emotion on selected tab
+    const [tabTitle, setTabTitle] = useState("Emotions");  //to display selected emotion on selected tab
     const [scoreType, setScoreType] = useState("Monthly"); //monthly or weekly for score
     const [scoreFrequency, setScoreFrequency] = useState("Subjectivity"); //frequency for score
     const [emotionType, setEmotionType] = useState("Monthly"); //monthly or weekly for emotion
@@ -23,7 +23,7 @@ function Overall(props) {
             case "Sad": tempTitle = "Sad"; break;
             case "Anger": tempTitle = "Anger"; break;
             case "Fear": tempTitle = "Fear"; break;
-            default: tempTitle = "Joy";
+            default: tempTitle = "Emotions";
         }
         setTabTitle(tempTitle);
     }
@@ -65,6 +65,17 @@ function Overall(props) {
         setTabFreq(o);
     }
 
+    //get freq10 of all 4 emotions
+    function freq10All() {
+        let emo = ["Joy", "Sad", "Anger", "Fear"];
+        //array of object with all emotion freq 10;
+        let res = [];
+        for (let i = 0; i < emo.length; i++) {
+            res.push(freq.freq10(props.data, emo[i]));
+        }
+        return res;
+    }
+
     // console.log(props.data, "hereoverall")
     return (
         <div className={styles.Container}>
@@ -79,7 +90,7 @@ function Overall(props) {
                     <h1>{scoreType}</h1>
                     <Picker option1={"Monthly"} option2={"Weekly"} handlePicker={handleScorePicker} />
                 </div>
-                {scoreType === "Monthly" && props.data.length !== 0 && <ScoreBarChart sentiment={monthData} />}
+                {scoreType === "Monthly" && props.data.length !== 0 && <ScoreBarChart monthly sentiment={monthData} />}
                 {scoreType === "Weekly" && props.data.length !== 0 && <ScoreBarChart sentiment={weekData} />}
             </div>
             <div className={styles.Frequency}>
@@ -87,10 +98,12 @@ function Overall(props) {
                     <h1>Frequency</h1>
                     <Picker option1={"Subjectivity"} option2={"Polarity"} handlePicker={handleScoreFrequency} />
                 </div>
-                {(props.data.length !== 0 && scoreFrequency === "Subjectivity") && <FrequencyBarChart title={"Subjectivity"} sentiment={freq.freqSubjectivity(props.data)} />}
-                {(props.data.length !== 0 && scoreFrequency === "Polarity") && <FrequencyBarChart title={"Polarity"} sentiment={freq.freqPolarity(props.data)} />}
+                {(props.data.length !== 0 && scoreFrequency === "Subjectivity") && <FrequencyBarChart title={"Subjectivity"} score sentiment={freq.freqSubjectivity(props.data)} />}
+                {(props.data.length !== 0 && scoreFrequency === "Polarity") && <FrequencyBarChart title={"Polarity"} score sentiment={freq.freqPolarity(props.data)} />}
             </div>
+            {/* Emotions section here */}
             <div className={styles.Tabs}>
+                <Tab title="Emotions" onSelect={onSelect} />
                 <Tab title="Joy" onSelect={onSelect} />
                 <Tab title="Sad" onSelect={onSelect} />
                 <Tab title="Anger" onSelect={onSelect} />
@@ -100,23 +113,29 @@ function Overall(props) {
                 <div className={styles.Heading}>
                     <h1>{tabTitle + " Daily"}</h1>
                 </div>
-                {props.data.length !== 0 ? <LineChart title={tabTitle.toLowerCase()} sentiment={props.data} /> : spinner}
+                {props.data.length === 0 && spinner}
+                {props.data.length !== 0 && tabTitle === "Emotions" && <MultiLineChart sentiment={props.data} />}
+                {props.data.length !== 0 && tabTitle !== "Emotions" && <LineChart title={tabTitle.toLowerCase()} sentiment={props.data} />}
             </div>
             <div className={styles.TabsMonthly}>
                 <div className={styles.Heading}>
                     <h1>{emotionType}</h1>
                     <Picker option1={"Monthly"} option2={"Weekly"} handlePicker={handleEmotionPicker} />
                 </div>
-                {emotionType === "Monthly" && props.data.length !== 0 && <BarChart title={tabTitle.toLowerCase()} sentiment={monthData} />}
-                {emotionType === "Weekly" && props.data.length !== 0 && <BarChart title={tabTitle.toLowerCase()} sentiment={weekData} />}
+
+                {emotionType === "Monthly" && props.data.length !== 0 && tabTitle === "Emotions" && <MultiBarChart monthly sentiment={monthData} />}
+                {emotionType === "Weekly" && props.data.length !== 0 && tabTitle === "Emotions" && <MultiBarChart sentiment={weekData} />}
+                {emotionType === "Monthly" && props.data.length !== 0 && tabTitle !== "Emotions" && <BarChart monthly title={tabTitle.toLowerCase()} sentiment={monthData} />}
+                {emotionType === "Weekly" && props.data.length !== 0 && tabTitle !== "Emotions" && <BarChart title={tabTitle.toLowerCase()} sentiment={weekData} />}
             </div>
             <div className={styles.TabsFrequency}>
                 <div className={styles.Heading}>
                     <h1>Frequency</h1>
-                    <Picker option1={"Overall"} option2={"Details"} handlePicker={handleEmotionFrequency} />
+                    {tabTitle !== "Emotions" && <Picker option1={"Overall"} option2={"Details"} handlePicker={handleEmotionFrequency} />}
                 </div>
-                {(props.data.length !== 0 && emotionFrequency === "Overall") && <FrequencyBarChart title={tabTitle} sentiment={freq.freq10(props.data, tabTitle)} />}
-                {(props.data.length !== 0 && emotionFrequency === "Details") && <FrequencyBarChart title={tabTitle} sentiment={tabFreq} />}
+                {(props.data.length !== 0 && tabTitle === "Emotions" && emotionFrequency === "Overall") && <MultiFrequencyBarChart title={tabTitle} sentiment={freq10All()} />}
+                {(props.data.length !== 0 && tabTitle !== "Emotions" && emotionFrequency === "Overall") && <FrequencyBarChart title={tabTitle} sentiment={freq.freq10(props.data, tabTitle)} />}
+                {(props.data.length !== 0 && tabTitle !== "Emotions" && emotionFrequency === "Details") && <FrequencyBarChart title={tabTitle} sentiment={tabFreq} />}
             </div>
         </div>
     );

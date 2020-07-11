@@ -60,7 +60,7 @@
   text-align: center;
   height: fit-content;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .TabsDaily {

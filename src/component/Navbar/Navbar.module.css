@@ -8,10 +8,13 @@
 
 .Item {
   border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Item h1 {
-  margin: 3px 0;
+  margin: 3px 10px;
   font-size: 1.5rem;
   padding: 0 0;
 }
