@@ -1,0 +1,46 @@
+.grid {
+  display: grid;
+  grid-template-rows: 40% auto;
+  grid-template-columns: 100%;
+  height: 100%;
+  .child_1 {
+    background-image: url("./../../assets/images/twitter.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    .jumbotron {
+      margin: 6%;
+    }
+    .title {
+      font-size: 4em;
+      color: #1f7bac;
+    }
+    .subtitle {
+      font-size: 1.1em;
+      color: #93dcff;
+    }
+    .button {
+      color: white;
+      border: 1px solid white;
+      margin-top: 2%;
+      .link {
+        color: white;
+        text-decoration: none;
+      }
+      margin-left: 2%;
+    }
+  }
+  .child_2 {
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    .summary {
+      grid-column: 2/3;
+      margin-top: 5%;
+      .text {
+        color: #1b1b1b;
+        line-height: 1.5em;
+      }
+    }
+  }
+}

@@ -3,6 +3,15 @@ import { Bar } from "react-chartjs-2";
 
 import styles from "./BarChart.module.css";
 
+const colors = {
+    joy: "#fddb22",
+    anger: "#ff1f1f",
+    sad: "#3333ff",
+    fear: "#3d3d3d",
+    subjectivity: "orange",
+    polarity: "lightgreen"
+}
+
 
 function BarChart(props) {
 
@@ -20,7 +29,7 @@ function BarChart(props) {
             label: "Percentage " + props.title,
             fill: false,
             barThickness: 12,
-            backgroundColor: 'lightgreen',
+            backgroundColor: colors[props.title],
             borderWidth: 2,
             data: props.sentiment.map(d => (d[props.title].toFixed(2)))
         }
@@ -71,7 +80,7 @@ function FrequencyBarChart(props) {
             label: "Frequency " + props.title,
             fill: false,
             barThickness: 12,
-            backgroundColor: 'lightgreen',
+            backgroundColor: colors[props.title.toLowerCase()],
             borderWidth: 2,
             data: Object.values(props.sentiment)
         }

@@ -15,6 +15,8 @@
 
 .ChartElement {
   /* padding: 20px 20px; */
+  min-width: fit-content;
+  min-height: fit-content;
   height: 400px;
   width: 400px;
 }

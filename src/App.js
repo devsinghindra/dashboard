@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
-import Home from './component/Home/Home';
 import Header from './component/Header/Header';
 import Navbar from './component/Navbar/Navbar';
 import Date from "./component/Date/Date";
@@ -9,42 +8,46 @@ import Tracker from "./component/Tracker/Tracker";
 import cloudDB, { collectionName } from "./services/firebase";
 
 function App() {
-  const [render, setRender] = useState("Overall");
+  const isCancelled = React.useRef(false);//prevent memory leaks performs only api calls when component is loaded to dom
+  const [render, setRender] = useState("Date");
   const [data, setData] = useState([]);
   const fetchData = async () => {
     let sentimentData = [];
-    try {
-      await cloudDB.collection(collectionName).get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          sentimentData.push(
-            {
-              date: doc.id,
-              value: doc.data()
-            }
-          );
+    if (!isCancelled.current)
+      try {
+        await cloudDB.collection(collectionName).get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            sentimentData.push(
+              {
+                date: doc.id,
+                value: doc.data()
+              }
+            );
+          });
         });
-      });
-      setData(sentimentData);
-    } catch (error) {
-      console.log(error);
+        setData(sentimentData);
+      } catch (error) {
+        console.log(error);
 
-    }
+      }
   }
   useEffect(() => {
     fetchData();
+    return () => {
+      isCancelled.current = true;
+    };
   }, []);
 
-  // console.log(data, 'app');
+  console.log(data, 'app');
 
   function onSelect(tab) {
     setRender(tab);
   }
-  let show = <Home />
+  let show;
   switch (render) {
-    case "Date": show = <Date data={data.map((el, idx, data) => data[data.length - 1 - idx])} />; break;
     case "Overall": show = <Overall data={data} />; break;
     case "Tracker": show = <Tracker />; break;
-    default: show = <Home />;
+    default: show = <Date data={data.map((el, idx, data) => data[data.length - 1 - idx])} />; break;
   }
   return (
     <div className={styles.App}>

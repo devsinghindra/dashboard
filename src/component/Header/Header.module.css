@@ -14,3 +14,8 @@
   background-color: #1f1f1f;
   cursor: pointer;
 }
+
+.NavItem {
+  color: white;
+  text-decoration: none;
+}

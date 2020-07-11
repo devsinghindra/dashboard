@@ -3,6 +3,14 @@ import { Line } from "react-chartjs-2";
 
 import styles from "./LineChart.module.css";
 
+
+const colors = {
+    joy: "#fddb22",
+    anger: "#ff1f1f",
+    sad: "#3333ff",
+    fear: "#3d3d3d"
+}
+
 function LineChart(props) {
     const stateLine = props.sentiment.length !== 0 ? {
         labels: props.sentiment.map(d =>
@@ -12,7 +20,7 @@ function LineChart(props) {
             fill: false,
             backgroundColor: 'black',
             lineTension: .5,
-            borderColor: 'rgba(144,238,144,1)',
+            borderColor: colors[props.title.toLowerCase()],
             borderWidth: 2,
             data: props.sentiment.map(d => (d.value[props.title].toFixed(2)))
         }]
@@ -69,7 +77,8 @@ function DualLineChart(props) {
             lineTension: .5,
             borderColor: 'rgba(144,238,144,10)',
             borderWidth: 2,
-            data: props.sentiment.map(d => (d.value[props.title1].toFixed(2)))
+            data: props.sentiment.map(d => (d.value[props.title1].toFixed(2))),
+            yAxisID: "polarity"
         },
         {
             label: "Percentage Score " + props.title2,
@@ -78,7 +87,8 @@ function DualLineChart(props) {
             lineTension: .5,
             borderColor: 'rgba(255,165,0,10)',
             borderWidth: 2,
-            data: props.sentiment.map(d => (d.value[props.title2].toFixed(2)))
+            data: props.sentiment.map(d => (d.value[props.title2].toFixed(2))),
+            yAxisID: "subjectivity"
         }]
     } : null;
 
@@ -90,8 +100,18 @@ function DualLineChart(props) {
             scales: {
                 yAxes: [
                     {
+                        id: "polarity",
+                        type: "linear",
+                        position: "left",
                         ticks: {
-                            beginAtZero: true
+                            // beginAtZero: true
+                        }
+                    }, {
+                        id: "subjectivity",
+                        type: "linear",
+                        position: "right",
+                        ticks: {
+                            // beginAtZero: true
                         }
                     }
                 ]

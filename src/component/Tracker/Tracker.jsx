@@ -4,7 +4,7 @@ import Chart from "./Chart/Chart";
 import CountryPicker from "./CountryPicker/CountryPicker";
 import styles from "./Tracker.module.css";
 import { fetchData } from "../../services/api";
-import covidImage from "../../assests/images/image.png";
+import covidImage from "../../assets/images/image.png";
 
 class Tracker extends React.Component {
 
