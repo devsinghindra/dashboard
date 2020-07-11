@@ -48,7 +48,6 @@ function LineChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>{props.heading}</h1>
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {line}
@@ -98,7 +97,7 @@ function DualLineChart(props) {
                 ]
             },
             title: {
-                display: true,
+                display: false,
                 text: "Percentage Score " + props.title + " per day",
                 fontSize: 20
             },
@@ -113,7 +112,6 @@ function DualLineChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <h1>{props.heading}</h1>
                 <div className={styles.Chart}>
                     <div className={styles.ChartElement}>
                         {line}

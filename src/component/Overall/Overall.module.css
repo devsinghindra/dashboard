@@ -4,7 +4,7 @@
   padding: 10px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 2fr 0.5fr auto 2fr;
+  grid-template-rows: 2 2fr 0.5fr 2 2fr;
   grid-template-areas:
     "Score Score"
     "Monthly Frequency"
@@ -17,6 +17,7 @@
   padding: 10px 10px;
   grid-area: Score;
   display: flex;
+  flex-flow: column;
 }
 
 .Monthly {
@@ -40,6 +41,10 @@
   justify-content: space-around;
 }
 
+.Heading h1 {
+  margin: 0 0;
+}
+
 .Freqency {
   grid-area: Frequency;
   margin: 10px 10px;
@@ -59,7 +64,11 @@
 }
 
 .TabsDaily {
+  padding: 40px 10px;
   grid-area: TabsDaily;
+  display: flex;
+  flex-flow: column;
+  align-content: center;
 }
 
 .Tab {

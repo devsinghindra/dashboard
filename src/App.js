@@ -9,7 +9,7 @@ import Tracker from "./component/Tracker/Tracker";
 import cloudDB, { collectionName } from "./services/firebase";
 
 function App() {
-  const [render, setRender] = useState("Date");
+  const [render, setRender] = useState("Overall");
   const [data, setData] = useState([]);
   const fetchData = async () => {
     let sentimentData = [];
