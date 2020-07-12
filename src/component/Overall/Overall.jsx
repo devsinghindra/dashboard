@@ -5,8 +5,12 @@ import BarChart, { ScoreBarChart, FrequencyBarChart, MultiBarChart, MultiFrequen
 import { getWeekData, getMonthData } from "../../services/utilities";
 import { NativeSelect, FormControl, CircularProgress } from "@material-ui/core";
 import * as freq from "../../services/frequency";
+import SimpleCard from "../ui/Cards/SimpleCard";
 
 const spinner = <CircularProgress />;
+const text = "Analyze emotion , Score of each and every day of lockdown individually with ML generated Word Cloud. Use date picker to change date.";
+const why = "Sentiment analysis of tweets provides exciting opportunities. Being able to analyze tweets in real-time, and determine the sentiment that underlies each message, adds a new dimension to social media monitoring.";
+
 
 function Overall(props) {
     const [tabTitle, setTabTitle] = useState("Emotions");  //to display selected emotion on selected tab
@@ -79,6 +83,17 @@ function Overall(props) {
     // console.log(props.data, "hereoverall")
     return (
         <div className={styles.Container}>
+            <div className={styles.Text}>
+                <span>{text}</span>
+                <h1>Why</h1>
+                <span>{why}</span>
+            </div>
+            <div className={styles.Card}>
+                <SimpleCard count={5000} content="tweets per day" />
+                <SimpleCard count={4} content="emotions" />
+                <SimpleCard count={2} content="score analysis" />
+                <SimpleCard count={5} content="analysis method" />
+            </div>
             <div className={styles.Score}>
                 <div className={styles.Heading}>
                     <h1>Score Daily</h1>

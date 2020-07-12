@@ -1,13 +1,46 @@
 .Container {
   flex: 1;
   background-color: var(--background);
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
-  align-items: flex-start;
-  padding: 100px 10px;
+  align-items: flex-start; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-rows: auto auto 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 100px;
+  grid-template-areas:
+    "Text Text Text Text"
+    "Card Card Card Card"
+    "Emotion Score WordCloud Picker";
+  padding: 50px 10px;
+}
+
+.Text {
+  grid-area: Text;
+  margin: 0 200px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  box-shadow: var(--card);
+}
+
+.Text h1 {
+  margin: 5px 0;
+}
+
+.Text span {
+  font-size: 1.5rem;
+}
+.Card {
+  grid-area: Card;
+  display: grid;
+  padding: 0 50px;
+  grid-column-gap: 100px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .Emotion {
+  grid-area: Emotion;
   text-align: center;
   box-sizing: border-box;
   box-shadow: var(--card);
@@ -18,6 +51,7 @@
 }
 
 .Score {
+  grid-area: Score;
   text-align: center;
   box-sizing: border-box;
   box-shadow: var(--card);
@@ -30,6 +64,7 @@
 }
 
 .WordCloud {
+  grid-area: WordCloud;
   height: 480px;
   min-width: 400px;
   width: fit-content;
@@ -49,6 +84,7 @@
 }
 
 .Picker {
+  grid-area: Picker;
   box-sizing: border-box;
   box-shadow: var(--card);
 }

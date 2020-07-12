@@ -1,16 +1,44 @@
 .Container {
   flex: 1;
   background-color: var(--background);
-  padding: 10px 10px;
+  padding: 50px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2 2fr 0.5fr 2 2fr;
+  grid-template-rows: auto auto 2 2fr 0.5fr 2 2fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 50px;
   grid-template-areas:
+    "Text Text"
+    "Card Card"
     "Score Score"
     "Monthly Frequency"
     "Tabs Tabs"
     "TabsDaily TabsDaily"
     "TabsMonthly TabsFrequency";
+}
+
+.Text {
+  grid-area: Text;
+  margin: 0 200px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  box-shadow: var(--card);
+}
+
+.Text h1 {
+  margin: 5px 0;
+}
+
+.Text span {
+  font-size: 1.5rem;
+}
+
+.Card {
+  grid-area: Card;
+  display: grid;
+  padding: 0 50px;
+  grid-column-gap: 100px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .Score {

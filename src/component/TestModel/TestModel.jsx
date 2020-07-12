@@ -93,7 +93,7 @@ function TestModel() {
             if (Object.keys(scoreData).length === 0) {
                 console.log("empty object from score api");
             } else {
-                // console.log(scoreData.data);
+                console.log(scoreData.data);
                 setScore(scoreData.data);
             }
         } catch (error) {
