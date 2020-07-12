@@ -1,0 +1,33 @@
+// Make a theme for color ,fonts
+
+// font - same as default of react
+
+//Header
+$colrM : #1f7bac;
+$colr2D : #004f7c;
+$colr3L : #5eaade;
+
+//Background
+$background : #f2f2f2;
+$backgroundText : #e2e1e0;
+
+// border radius
+$radius : 5px;
+
+//Text
+$heading : #424242;
+$text    : #1b1b1b;
+$sub-text : #6d6d6d;
+
+// Color
+$happy : #fddb22;                  //use as overall
+$fear  : #3d3d3d;                  //use as hashtal
+$sad   : #3333ff;                  //use as today
+$anger : #ff1f1f; 
+
+//Box Shadow
+$card : 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$card-transition: all 0.3s cubic-bezier(.25,.8,.25,1);   
+$card-hover : 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+$rest :  0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$shadow : 2px 2px 2px lightgrey;

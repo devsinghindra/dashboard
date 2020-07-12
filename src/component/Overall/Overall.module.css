@@ -1,6 +1,5 @@
 .Container {
   flex: 1;
-  background-color: var(--background);
   padding: 10px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -11,6 +10,7 @@
     "Tabs Tabs"
     "TabsDaily TabsDaily"
     "TabsMonthly TabsFrequency";
+  background-color:#f2f2f2;
 }
 
 .Score {

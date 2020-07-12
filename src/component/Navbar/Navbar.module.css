@@ -4,6 +4,7 @@
   color: white;
   background-color: #191919;
   text-align: center;
+  background-color: #1f7bac;
 }
 
 .Item {
@@ -20,6 +21,6 @@
 }
 
 .Item:hover {
-  background-color: #1f1f1f;
+  background-color: #004f7c;
   cursor: pointer;
 }

@@ -59,7 +59,7 @@ function Date(props) {
                 {(Object.keys(date).length !== 0) ? <ScoreBarChart sentiment={[{ subjectivity: date.value.subjectivity, polarity: date.value.polarity }]} /> : <CircularProgress />}
             </div>
             <div className={styles.WordCloud}>
-                <h2>Word Cloud</h2>
+                <h1>Word Cloud</h1>
                 {imgUrl !== "" ? <img src={imgUrl} alt="wordcloud" /> : <CircularProgress />}
             </div>
             <div>

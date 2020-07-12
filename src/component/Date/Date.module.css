@@ -1,6 +1,6 @@
 .Container {
   flex: 1;
-  background-color: var(--background);
+  background-color: #f2f2f2;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -10,7 +10,10 @@
 .Emotion {
   text-align: center;
   box-sizing: border-box;
-  box-shadow: var(--card);
+  background: white;
+  margin-right: 1%;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .Emotion h1 {
@@ -20,9 +23,12 @@
 .Score {
   text-align: center;
   box-sizing: border-box;
-  box-shadow: var(--card);
   width: 500px;
   height: fit-content;
+  background: white;
+  margin-right: 1%;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .Score h1 {
@@ -35,17 +41,20 @@
   width: fit-content;
   text-align: center;
   box-sizing: border-box;
-  box-shadow: var(--card);
+  background: white;
+  margin-right: 1%;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-.WordCloud h2 {
-  padding: 0 0;
+.WordCloud h1 {
+  margin: 0 0;
 }
 
 .WordCloud img {
   padding: 10px 10px;
   height: 400px;
-  width: 400px;
+  width: 385px;
 }
 
 .Picker {

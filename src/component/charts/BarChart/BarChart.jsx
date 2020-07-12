@@ -8,8 +8,8 @@ const colors = {
     anger: "#ff1f1f",
     sad: "#3333ff",
     fear: "#3d3d3d",
-    subjectivity: "orange",
-    polarity: "lightgreen"
+    subjectivity: "#0047fc",
+    polarity: "#1f7bac"
 }
 
 

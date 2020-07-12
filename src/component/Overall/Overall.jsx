@@ -75,7 +75,6 @@ function Overall(props) {
         }
         return res;
     }
-
     // console.log(props.data, "hereoverall")
     return (
         <div className={styles.Container}>
