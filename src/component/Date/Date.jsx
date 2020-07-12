@@ -5,6 +5,10 @@ import PieChart from "../charts/PieChart/PieChart";
 import { ScoreBarChart } from "../charts/BarChart/BarChart";
 import { CircularProgress } from "@material-ui/core";
 import { storageRef, storagePath } from "../../services/firebase";
+import SimpleCard from "../ui/Cards/SimpleCard";
+
+const text = "Analyze emotion , Score of each and every day of lockdown individually with ML generated Word Cloud. Use date picker to change date.";
+const why = "Sentiment analysis of tweets provides exciting opportunities. Being able to analyze tweets in real-time, and determine the sentiment that underlies each message, adds a new dimension to social media monitoring.";
 
 function Date(props) {
     const [date, setDate] = useState({});
@@ -50,6 +54,17 @@ function Date(props) {
     // console.log(date, "date");
     return (
         <div className={styles.Container}>
+            <div className={styles.Text}>
+                <span>{text}</span>
+                <h1>Why</h1>
+                <span>{why}</span>
+            </div>
+            <div className={styles.Card}>
+                <SimpleCard count={5000} content="tweets per day" />
+                <SimpleCard count={4} content="emotions" />
+                <SimpleCard count={1} content="wordcloud" />
+                <SimpleCard count={97} content="days" />
+            </div>
             <div className={styles.Emotion}>
                 <h1>Emotion</h1>
                 {(Object.keys(date).length !== 0) ? <PieChart sentiment={[date.value.joy, date.value.anger, date.value.sad, date.value.fear]} /> : <CircularProgress />}
