@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie, Doughnut } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 import styles from "./PieChart.module.css";
 

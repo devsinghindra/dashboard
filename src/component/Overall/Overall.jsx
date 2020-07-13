@@ -18,18 +18,9 @@ function Overall(props) {
     const [scoreFrequency, setScoreFrequency] = useState("Subjectivity"); //frequency for score
     const [emotionType, setEmotionType] = useState("Monthly"); //monthly or weekly for emotion
     const [emotionFrequency, setEmotionFrequency] = useState("Overall"); //frequency for emotion
-    const [tabFreq, setTabFreq] = useState({}); //frequency for emotion tab object
 
     function onSelect(tabName) {
-        let tempTitle = "Joy";
-        switch (tabName) {
-            case "Joy": tempTitle = "Joy"; break;
-            case "Sad": tempTitle = "Sad"; break;
-            case "Anger": tempTitle = "Anger"; break;
-            case "Fear": tempTitle = "Fear"; break;
-            default: tempTitle = "Emotions";
-        }
-        setTabTitle(tempTitle);
+        setTabTitle(tabName);
     }
 
     // console.log(props.data, "overall");
@@ -48,6 +39,7 @@ function Overall(props) {
 
     function handleEmotionPicker(what) {
         // console.log(what);
+        // console.log(tabTitle, "emottionpicker");
         setEmotionType(what);
     }
 
@@ -57,16 +49,20 @@ function Overall(props) {
     }
 
     function handleEmotionFrequency(what) {
-        console.log(what);
+        // console.log(what);
         setEmotionFrequency(what);
+    }
+
+    function freqEmotionAll(tabName) {
+        // console.log(tabName, tabTitle);
         let o = {};
-        switch (tabTitle) {
+        switch (tabName) {
             case "Sad": o = freq.freqSad(props.data); break;
             case "Fear": o = freq.freqFear(props.data); break;
             case "Anger": o = freq.freqAnger(props.data); break;
             default: o = freq.freqJoy(props.data);
         }
-        setTabFreq(o);
+        return o;
     }
 
     //get freq10 of all 4 emotions
@@ -149,7 +145,7 @@ function Overall(props) {
                 </div>
                 {(props.data.length !== 0 && tabTitle === "Emotions" && emotionFrequency === "Overall") && <MultiFrequencyBarChart title={tabTitle} sentiment={freq10All()} />}
                 {(props.data.length !== 0 && tabTitle !== "Emotions" && emotionFrequency === "Overall") && <FrequencyBarChart title={tabTitle} sentiment={freq.freq10(props.data, tabTitle)} />}
-                {(props.data.length !== 0 && tabTitle !== "Emotions" && emotionFrequency === "Details") && <FrequencyBarChart title={tabTitle} sentiment={tabFreq} />}
+                {(props.data.length !== 0 && tabTitle !== "Emotions" && emotionFrequency === "Details") && <FrequencyBarChart title={tabTitle} sentiment={freqEmotionAll(tabTitle)} />}
             </div>
         </div>
     );
