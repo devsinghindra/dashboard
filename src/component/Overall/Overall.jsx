@@ -88,10 +88,10 @@ function Overall(props) {
                 <span>{why}</span>
             </div>
             <div className={styles.Card}>
-                <SimpleCard count={5000} content="tweets per day" />
-                <SimpleCard count={4} content="emotions" />
-                <SimpleCard count={2} content="score analysis" />
-                <SimpleCard count={5} content="analysis method" />
+                <SimpleCard count={5000} content="Tweets per day" />
+                <SimpleCard count={4} content="Emotions" />
+                <SimpleCard count={2} content="Score analysis" />
+                <SimpleCard count={5} content="Analysis method" />
             </div>
             <div className={styles.Score}>
                 <div className={styles.Heading}>

@@ -14,7 +14,7 @@
     "Tabs Tabs"
     "TabsDaily TabsDaily"
     "TabsMonthly TabsFrequency";
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .Text {
@@ -37,7 +37,7 @@
   display: grid;
   padding: 0 50px;
   grid-column-gap: 2%;
-  grid-template-columns: repeat(4,13%);
+  grid-template-columns: repeat(4, 13%);
   justify-content: center;
 }
 
@@ -46,9 +46,9 @@
   grid-area: Score;
   display: flex;
   flex-flow: column;
-  background : white;
+  background: white;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .Monthly {
@@ -56,9 +56,10 @@
   display: flex;
   flex-flow: column;
   margin: 10px 10px;
-  background : white;
+  padding: 10px 10px;
+  background: white;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .TabsMonthly {
@@ -66,10 +67,10 @@
   display: flex;
   flex-flow: column;
   margin: 10px 10px;
-  background : white;
+  padding: 10px 10px;
+  background: white;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .Heading {
@@ -83,22 +84,22 @@
   margin: 0 0;
 }
 
-.Freqency {
+.Frequency {
   grid-area: Frequency;
   margin: 10px 10px;
-  background : white;
+  padding: 10px 10px;
+  background: white;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
 
- }
-
-.TabsFreqency {
+.TabsFrequency {
   grid-area: TabsFrequency;
   margin: 10px 10px;
-  background : white;
+  padding: 10px 10px;
+  background: white;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .Tabs {
@@ -115,10 +116,9 @@
   display: flex;
   flex-flow: column;
   align-content: center;
-  background : white;
+  background: white;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .Tab {
