@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Doughnut } from 'react-chartjs-2';
 
 import styles from "./PieChart.module.css";
 
@@ -15,16 +15,16 @@ function PieChart(props) {
     const statePie = props.sentiment.length !== 0 ? {
         labels: Object.keys(colors),
         datasets: [{
-            borderColor: 'rgba(0,0,0,10)',
+            borderColor: 'rgba(255,255,255,10)',
             borderWidth: 2,
             data: props.sentiment.map(d => +d.toFixed(2)),
             backgroundColor: Object.values(colors),
-            hoverBackgroundColor: Object.values(colors)
-        }
-        ]
+            hoverBackgroundColor: Object.values(colors),
+        },
+        ],
     } : null;
 
-    const pie = statePie !== null ? (<Pie
+    const pie = statePie !== null ? (<Doughnut
         data={statePie}
         options={{
             responsive: true,
@@ -34,6 +34,7 @@ function PieChart(props) {
             //     text: "Emotion Pie Chart",
             //     fontSize: 20
             // },
+            cutoutPercentage: 70,
             legend: {
                 display: true,
                 position: "bottom"

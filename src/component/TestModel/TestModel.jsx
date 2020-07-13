@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from "react-router-dom";
 import { Home } from "@material-ui/icons";
 import axios from "axios";
+import { CircularProgress } from "@material-ui/core";
 
 //emotion images
 import analyticalImg from "../../assets/images/analytical.gif";
@@ -43,14 +44,17 @@ const useStyles = makeStyles((theme) => ({
 const scoreAPI = "http://mkk23051999.pythonanywhere.com/score/?text=";
 const emotionAPI = "https://nameless-bayou-63665.herokuapp.com/emotion?text=";
 
+const spinner = <CircularProgress />;
+
 function TestModel() {
     const classes = useStyles();
     // const classes = useStyles();
     // Add flexbox and style and content
     const [inputText, setInputText] = useState("");//for storing input text
     const [emotion, setEmotion] = useState(""); //for storing emotion from emotionApi
-    const [score, setScore] = useState({ Polarity: 0, Subjectivity: 0 }); //for stroing score from scoreApi
-    const [imgSource, setImgSource] = useState("");
+    const [score, setScore] = useState({}); //for stroing score from scoreApi
+    const [imgSource, setImgSource] = useState(""); //for storing emoji
+    const [showSpinner, setShowSpinner] = useState(false); //for showing spinner
     function handleInput(val) {
         // console.log(val);
         setInputText(val);
@@ -76,6 +80,7 @@ function TestModel() {
             //     console.log(error, "axios");
             // });
             //getting emotion
+            setShowSpinner(true);
             const emotionData = await axios.get(emotionAPI + inputText);
             if (emotionData.data.length === 0) {
                 setEmotion("Neutral");
@@ -96,6 +101,7 @@ function TestModel() {
                 console.log(scoreData.data);
                 setScore(scoreData.data);
             }
+            setShowSpinner(false);
         } catch (error) {
             console.log(error, "incatch");
         }
@@ -150,12 +156,12 @@ function TestModel() {
                     onClick={handleSubmit}
                 >Check</Button>
                 <div className={styles.output}>   {/* store output here */}
-                    <div className={styles.subject}><span>Subjectivity :</span><div>{score.Subjectivity.toFixed(2)}</div></div>
-                    <div className={styles.polar}><span>Polarity :</span><div>{score.Polarity.toFixed(2)}</div></div>
-                    <div className={styles.emotion}><span>Emotion :</span><div>{emotion}</div></div>
-                    <div className={styles.emoji}><span>Emoji : </span>{imgSource !== "" && <img src={imgSource} alt="Emotion" />}</div>
+                    <div className={styles.subject}><span>Subjectivity :</span><div>{showSpinner ? spinner : (Object.keys(score).length !== 0 && score.Subjectivity.toFixed(2))}</div></div>
+                    <div className={styles.polar}><span>Polarity :</span><div>{showSpinner ? spinner : (Object.keys(score).length !== 0 && score.Polarity.toFixed(2))}</div></div>
+                    <div className={styles.emotion}><span>Emotion :</span><div>{showSpinner ? spinner : emotion}</div></div>
+                    <div className={styles.emoji}><span>Emoji : </span>{showSpinner ? spinner : (imgSource !== "" && <img src={imgSource} alt="Emotion" />)}</div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }
