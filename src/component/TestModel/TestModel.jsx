@@ -155,7 +155,7 @@ function TestModel() {
                     <div className={styles.emotion}><span>Emotion :</span><div>{emotion}</div></div>
                     <div className={styles.emoji}><span>Emoji : </span>{imgSource !== "" && <img src={imgSource} alt="Emotion" />}</div>
                 </div>
-            </div>
+            </div> 
         </div>
     );
 }

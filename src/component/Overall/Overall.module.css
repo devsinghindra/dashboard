@@ -19,26 +19,26 @@
 
 .Text {
   grid-area: Text;
-  margin: 0 200px;
+  margin: 0 50px;
   padding: 10px 10px;
-  box-sizing: border-box;
-  box-shadow: var(--card);
 }
 
 .Text h1 {
   margin: 5px 0;
+  font-size: 1.2em;
 }
 
 .Text span {
-  font-size: 1.5rem;
+  font-size: 1.2em;
 }
 
 .Card {
   grid-area: Card;
   display: grid;
   padding: 0 50px;
-  grid-column-gap: 100px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 2%;
+  grid-template-columns: repeat(4,13%);
+  justify-content: center;
 }
 
 .Score {
@@ -46,6 +46,9 @@
   grid-area: Score;
   display: flex;
   flex-flow: column;
+  background : white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .Monthly {
@@ -53,6 +56,9 @@
   display: flex;
   flex-flow: column;
   margin: 10px 10px;
+  background : white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .TabsMonthly {
@@ -60,6 +66,10 @@
   display: flex;
   flex-flow: column;
   margin: 10px 10px;
+  background : white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
 
 .Heading {
@@ -76,11 +86,19 @@
 .Freqency {
   grid-area: Frequency;
   margin: 10px 10px;
-}
+  background : white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+ }
 
 .TabsFreqency {
   grid-area: TabsFrequency;
   margin: 10px 10px;
+  background : white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
 
 .Tabs {
@@ -97,10 +115,14 @@
   display: flex;
   flex-flow: column;
   align-content: center;
+  background : white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
 
 .Tab {
-  background-color: #191919;
+  background-color: #1f7bac;
   margin: 0 5px;
   border: 1px solid white;
   color: white;
@@ -112,7 +134,7 @@
 }
 
 .Tab:hover {
-  background-color: #1f1f1f;
+  background-color: #004f7c;
   cursor: pointer;
 }
 

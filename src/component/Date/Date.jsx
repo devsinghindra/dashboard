@@ -60,26 +60,32 @@ function Date(props) {
                 <span>{why}</span>
             </div>
             <div className={styles.Card}>
-                <SimpleCard count={5000} content="tweets per day" />
-                <SimpleCard count={4} content="emotions" />
-                <SimpleCard count={1} content="wordcloud" />
-                <SimpleCard count={97} content="days" />
+                <SimpleCard count={5000} content="Tweets per day" />
+                <SimpleCard count={4} content="Types of emotions" />
+                <SimpleCard count={1} content="Wordcloud Analysis" />
+                <SimpleCard count={97} content="Days Lockdown Analysis" />
+                <div>
+                    <h3>Select Date</h3>
+                    <DatePicker data={props.data} handleDate={handleDate} />
+                </div>
             </div>
-            <div className={styles.Emotion}>
-                <h1>Emotion</h1>
-                {(Object.keys(date).length !== 0) ? <PieChart sentiment={[date.value.joy, date.value.anger, date.value.sad, date.value.fear]} /> : <CircularProgress />}
-            </div>
-            <div className={styles.Score}>
-                <h1>Score</h1>
-                {(Object.keys(date).length !== 0) ? <ScoreBarChart sentiment={[{ subjectivity: date.value.subjectivity, polarity: date.value.polarity }]} /> : <CircularProgress />}
-            </div>
-            <div className={styles.WordCloud}>
-                <h1>Word Cloud</h1>
-                {imgUrl !== "" ? <img src={imgUrl} alt="wordcloud" /> : <CircularProgress />}
-            </div>
-            <div>
+            <div className={styles.Group}>
+                <div className={styles.Emotion}>
+                    <h1>Emotion</h1>
+                    {(Object.keys(date).length !== 0) ? <PieChart sentiment={[date.value.joy, date.value.anger, date.value.sad, date.value.fear]} /> : <CircularProgress />}
+                </div>
+                <div className={styles.Score}>
+                    <h1>Score</h1>
+                    {(Object.keys(date).length !== 0) ? <ScoreBarChart sentiment={[{ subjectivity: date.value.subjectivity, polarity: date.value.polarity }]} /> : <CircularProgress />}
+                </div>
+                <div className={styles.WordCloud}>
+                    <h1>Word Cloud</h1>
+                    {imgUrl !== "" ? <img src={imgUrl} alt="wordcloud" /> : <CircularProgress />}
+                </div>
+                {/* <div> 
                 <h3>Select Date</h3>
                 <DatePicker data={props.data} handleDate={handleDate} />
+            </div> */}
             </div>
         </div>
     );

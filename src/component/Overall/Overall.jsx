@@ -8,8 +8,8 @@ import * as freq from "../../services/frequency";
 import SimpleCard from "../ui/Cards/SimpleCard";
 
 const spinner = <CircularProgress />;
-const text = "Analyze emotion , Score of each and every day of lockdown individually with ML generated Word Cloud. Use date picker to change date.";
-const why = "Sentiment analysis of tweets provides exciting opportunities. Being able to analyze tweets in real-time, and determine the sentiment that underlies each message, adds a new dimension to social media monitoring.";
+const text = "Analyze overall sentiment score,emotion analysis generated from our custom ML model.";
+const why = "Subjectivity analyzes expression ,opinion feeling of text and Polarity refer overall orientation of emotion in text.Also we analyzed happy,sad,angaer,fear which show emotion.These all help in better understanding public sentiment";
 
 
 function Overall(props) {

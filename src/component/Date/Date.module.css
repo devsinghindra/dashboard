@@ -5,47 +5,53 @@
   justify-content: space-around;
   align-items: flex-start; 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
-  grid-template-rows: auto auto 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr auto; */
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 100%;
   grid-column-gap: 10px;
-  grid-row-gap: 100px;
-  grid-template-areas:
-    "Text Text Text Text"
-    "Card Card Card Card"
-    "Emotion Score WordCloud Picker";
+  grid-row-gap: 5%;
 }
 
 .Text {
-  grid-area: Text;
-  margin: 0 200px;
+ margin: 0 50px;
   padding: 10px 10px;
   box-sizing: border-box;
-  box-shadow: var(--card);
+  margin-top: 2%;
 }
 
 .Text h1 {
   margin: 5px 0;
+  font-size :1.2em;
 }
 
 .Text span {
   font-size: 1.5rem;
+  font-size: 1.2em;
 }
 .Card {
-  grid-area: Card;
   display: grid;
   padding: 0 50px;
-  grid-column-gap: 100px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 2%;
+  grid-template-columns: repeat(4,13%) auto;
+  justify-content: center;
+}
+
+.Group{
+  display : grid;
+  grid-template-columns: repeat(3,32%);
+  width: 100%;
+  grid-column-gap: 1%;
+  margin-bottom: 4%;
+  justify-content: center;
 }
 
 .Emotion {
-  grid-area: Emotion;
   text-align: center;
   box-sizing: border-box;
   background: white;
-  margin-right: 1%;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-bottom:4%;
 }
 
 .Emotion h1 {
@@ -53,13 +59,10 @@
 }
 
 .Score {
-  grid-area: Score;
   text-align: center;
   box-sizing: border-box;
-  width: 500px;
   height: fit-content;
   background: white;
-  margin-right: 1%;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -69,14 +72,11 @@
 }
 
 .WordCloud {
-  grid-area: WordCloud;
   height: 480px;
-  min-width: 400px;
   width: fit-content;
   text-align: center;
   box-sizing: border-box;
   background: white;
-  margin-right: 1%;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
