@@ -104,6 +104,8 @@ function TestModel() {
             setShowSpinner(false);
         } catch (error) {
             console.log(error, "incatch");
+            setEmotion("Some Error");
+            setShowSpinner(false);
         }
     }
 
