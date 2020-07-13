@@ -105,8 +105,8 @@ function TestModel() {
         } catch (error) {
             console.log(error, "incatch");
             setEmotion("Some Error");
-            setShowSpinner(false);
         }
+        setShowSpinner(false);
     }
 
     function handleSubmit() {
