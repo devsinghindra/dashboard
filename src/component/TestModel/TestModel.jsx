@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const scoreAPI = "http://mkk23051999.pythonanywhere.com/score/?text=";
+const scoreAPI = "https://mkk23051999.pythonanywhere.com/score/?text=";
 const emotionAPI = "https://nameless-bayou-63665.herokuapp.com/emotion?text=";
 
 const spinner = <CircularProgress />;
