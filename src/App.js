@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
 import Header from './component/Header/Header';
 import Navbar from './component/Navbar/Navbar';
@@ -8,7 +8,7 @@ import Tracker from "./component/Tracker/Tracker";
 import cloudDB, { collectionName } from "./services/firebase";
 
 function App() {
-  const isCancelled = React.useRef(false);//prevent memory leaks performs only api calls when component is loaded to dom
+  const isCancelled = useRef(false);//prevent memory leaks performs only api calls when component is loaded to dom
   const [render, setRender] = useState("Date");
   const [data, setData] = useState([]);
   const fetchData = async () => {

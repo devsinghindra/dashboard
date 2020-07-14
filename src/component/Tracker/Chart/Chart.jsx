@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { fetchDailyData } from "../../../services/api";
 import { Line, Bar } from "react-chartjs-2";
 import styles from "./Chart.module.css";
 
 function Chart({ data: { confirmed, recovered, deaths }, country }) {
     const [dailyData, setDailyData] = useState([]);
+    const isCancelled = useRef(false);//prevent memory leaks performs only api calls when component is loaded to dom
 
     useEffect(() => {
         const fetchAPI = async () => {
             setDailyData(await fetchDailyData());
         }
-        fetchAPI();
+        if (!isCancelled.current)
+            fetchAPI();
+        return () => {
+            isCancelled.current = true;
+        }
         // console.log(dailyData);
     }, []);
 

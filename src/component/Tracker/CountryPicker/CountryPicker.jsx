@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NativeSelect, FormControl } from "@material-ui/core";
 import styles from "./CountryPicker.module.css";
 import { fetchCountries } from "../../../services/api";
 
 function CountryPicker({ handleCountryChange }) {
+    const isCancelled = useRef(false);//prevent memory leaks performs only api calls when component is loaded to dom
     const [fetchedCountries, setFetchedCountries] = useState([]);
 
     useEffect(() => {
         const fetchAPI = async () => {
             setFetchedCountries(await fetchCountries());
         }
-        fetchAPI();
+        if (!isCancelled.current)
+            fetchAPI();
+        return () => {
+            isCancelled.current = true;
+        }
     }, [setFetchedCountries]);
 
-    console.log(fetchedCountries);
+    // console.log(fetchedCountries);
 
     return (
         <FormControl className={styles.formControl}>
