@@ -60,7 +60,7 @@ function TestModel() {
         setInputText(val);
     }
     function getImageSource(what) {
-        console.log(what, "what");
+        // console.log(what, "what");
         switch (what) {
             case "Confident": return confidenceImg;
             case "Anger": return angerImg;
@@ -92,19 +92,19 @@ function TestModel() {
                     setImgSource(getImageSource(emotionData.data[0].tone_name));
                 } catch (error) {
                     console.log(error, "in setemotion of tryblock");
+                    setEmotion("Some Error");
                 }
             }
             const scoreData = await axios.get(scoreAPI + inputText);
             if (Object.keys(scoreData).length === 0) {
                 console.log("empty object from score api");
             } else {
-                console.log(scoreData.data);
+                // console.log(scoreData.data);
                 setScore(scoreData.data);
             }
             setShowSpinner(false);
         } catch (error) {
             console.log(error, "incatch");
-            setEmotion("Some Error");
         }
         setShowSpinner(false);
     }
