@@ -38,9 +38,37 @@
     .summary {
       grid-column: 2/3;
       margin-top: 5%;
+      padding: 10px 0;
+      h1 {
+        margin: 0 0;
+        color: #1f7bac;
+      }
       .text {
+        padding: 10px 0;
         color: #1b1b1b;
         line-height: 1.5em;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    .child_2 {
+      display: flex;
+      padding: 10px 20px;
+      flex-flow: column;
+      align-items: center;
+      .summary {
+        margin-top: 5%;
+        h1 {
+          margin: 0 0;
+        }
+        .text {
+          padding: 10px 0;
+          color: #1b1b1b;
+          font-size: 1.2rem;
+        }
       }
     }
   }

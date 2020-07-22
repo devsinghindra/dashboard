@@ -166,7 +166,7 @@ function MultiBarChart(props) {
     return (
         <>
             <div className={styles.Container}>
-                <div className={styles.Chart} style={{ overflowX: "scroll", width: "600px" }}>
+                <div className={[styles.Chart, styles.MultiBar].join(' ')} >
                     <div className={styles.ChartElement} style={monthly ? {} : { width: "1000px" }}>
                         {bar}
                     </div>
