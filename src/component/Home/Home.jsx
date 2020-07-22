@@ -10,6 +10,22 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
 import { Dashboard, DeveloperMode } from "@material-ui/icons";
 
+const overview = `Twitter sentiment analysis Machine learning model, which can find the sentiment score based
+on the tweets data. We are finding sentiment scores and emotion for 5000 tweets data everyday
+using machine learning models and analyzing it with various data analysis like frequency count
+,monthly and weekly data analysis . Based on the sentiment score of everyday and
+,we can analyze the sentiments ,variation in sentiments of public.`;
+
+const purpose = `Sentiment analysis is extremely useful in social media monitoring as it allows us to gain an
+overview of the wider public opinion behind certain topics. Social media websites like Twitte,
+Facebook make that process quicker and easier than ever before, thanks to real-time
+monitoring capabilities.The human language is complex. Teaching a machine to analyse the various grammatical
+nuances, cultural variations, slang and misspellings that occur in online mentions is a difficult
+process. Teaching a machine to understand how context can affect tone is even more difficult
+The Corona Virus endangers our physical health indeed, but alongside, social distancing also
+poses a threat to our emotional stability. Thus, it is crucial to understand public sentiments under COVID-19.`;
+
+
 function Home() {
     // Add flexbox and style and content
     return (
@@ -38,10 +54,16 @@ function Home() {
             </div>
             <div className={styles.child_2}>
                 <div className={styles.summary}>
+                    <h1>Overview</h1>
+                    <hr />
                     <Typography variant="h5" component="h2" className={styles.text}>
-                        The sentiment analysis of Indians after the extension of lockdown announcements to be analyzed with the relevant #tags on twitter and build a predictive analytics model to understand the behavior of people if the lockdown is further extended.
-                        Also develop a dashboard with visualization of people reaction to the govt announcements on lockdown extension
-        </Typography>
+                        {overview}
+                    </Typography>
+                    <h1>Purpose</h1>
+                    <hr />
+                    <Typography variant="h5" component="h2" className={styles.text}>
+                        {purpose}
+                    </Typography>
                 </div>
             </div>
         </div>
