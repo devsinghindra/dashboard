@@ -63,6 +63,7 @@ function Home() {
                     <hr />
                     <Typography variant="h5" component="h2" className={styles.text}>
                         {purpose}
+                        <a href="https://drive.google.com/file/d/1A5bMs0Cb7UoTVwixiXcvOGf3M-AfLBmR/view?usp=sharing"> For more Information, Click Here.</a>
                     </Typography>
                 </div>
             </div>
