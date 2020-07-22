@@ -146,3 +146,30 @@
 .Select {
   padding: 2px 10px;
 }
+
+/* Mobile */
+@media (max-width: 480px) {
+  .Container {
+    flex: 1;
+    padding: 10px 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+  }
+  .Card {
+    grid-row-gap: 2%;
+    grid-template-columns: repeat(2, 53%);
+    grid-template-rows: repeat(2, 53%);
+    margin-bottom: 40px;
+  }
+
+  .Tab {
+    background-color: #1f7bac;
+    margin: 0 0 10px;
+  }
+
+  .Tab h1 {
+    margin: 3px 0;
+    font-size: 1rem;
+  }
+}

@@ -20,3 +20,9 @@
   /* width: 1000px; */
   /* background-color: rgb(251, 90, 41); */
 }
+
+@media (max-width: 480px) {
+  .ChartElement {
+    width: 1000px;
+  }
+}

@@ -9,12 +9,13 @@
 .Chart {
   /* height: 80%;
   width: 70%; */
-  padding: 20px 20px;
+  padding: 20px 0;
   /* overflow-x: scroll; */
 }
 
 .ChartElement {
-  /* padding: 20px 20px; */
+  padding: 0 0;
+  margin: 0 0;
   min-width: fit-content;
   min-height: fit-content;
   height: 400px;

@@ -19,3 +19,24 @@
   /* width: 2000px; */
   /* background-color: lightgreen; */
 }
+
+.MultiBar {
+  overflow-x: scroll;
+  width: 600px;
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .Chart {
+    overflow-x: scroll;
+  }
+
+  .MultiBar {
+    overflow-x: scroll;
+    width: 70%;
+  }
+  .ChartElement {
+    width: fit-content;
+  }
+}
