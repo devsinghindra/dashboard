@@ -52,8 +52,11 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (max-height: 480px) and (orientation: landscape) {
   .grid {
+    .button {
+      background-color: #1b1b1b;
+    }
     .child_2 {
       display: flex;
       padding: 10px 20px;
