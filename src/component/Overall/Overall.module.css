@@ -148,7 +148,7 @@
 }
 
 /* Mobile */
-@media (max-width: 480px) {
+@media (max-width: 480px), (max-height: 480px) and (orientation: landscape) {
   .Container {
     flex: 1;
     padding: 10px 10px;

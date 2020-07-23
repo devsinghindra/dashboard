@@ -102,7 +102,8 @@
 
 /* Mobile */
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px),
+  (max-height: 480px) and (orientation: landscape) {
   .Container {
     display: grid;
     /* grid-template-columns: 1fr 1fr 1fr auto; */
